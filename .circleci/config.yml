@@ -1,0 +1,28 @@
+version: 2
+
+jobs:
+  exec:
+    docker:
+      - iamge: circleci/ruby:2.6
+    steps:
+      - checkout
+      - run:
+          name: 'Bundle install'
+          command: 'bundle install'
+      - run:
+          name: "main"
+          command: notify-yudachi
+
+
+workflows:
+  version: 2
+  cron:
+    jobs:
+      - exec
+    triggers:
+      - schedule:
+          cron: "*/10 * * * *" 
+          filters:
+            branches:
+              only:
+                - master
