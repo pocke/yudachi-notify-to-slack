@@ -7,6 +7,9 @@ jobs:
     steps:
       - checkout
       - run:
+          name: Install bundler
+          command: gem install bundler
+      - run:
           name: 'Bundle install'
           command: 'bundle install'
       - run:
@@ -21,7 +24,7 @@ workflows:
       - exec
     triggers:
       - schedule:
-          cron: "0,3,10,20,30,40,50 * * * *"
+          cron: "0,5,10,20,30,40,50 * * * *"
           filters:
             branches:
               only:
