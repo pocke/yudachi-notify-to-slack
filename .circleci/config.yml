@@ -3,7 +3,7 @@ version: 2
 jobs:
   exec:
     docker:
-      - iamge: circleci/ruby:2.6
+      - image: circleci/ruby:2.6
     steps:
       - checkout
       - run:
@@ -21,7 +21,7 @@ workflows:
       - exec
     triggers:
       - schedule:
-          cron: "0,10,20,30,40,50 * * * *"
+          cron: "0,3,10,20,30,40,50 * * * *"
           filters:
             branches:
               only:
